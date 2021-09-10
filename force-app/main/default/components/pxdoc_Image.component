@@ -1,0 +1,12 @@
+<apex:component controller="ConPxDoc_Image" selfClosing="true">
+    <apex:attribute name="value" type="string" description="" assignTo="{!ResourceBodyByBase64}" />
+    <apex:attribute name="x" type="Decimal" description="" assignTo="{!BaseX}" />
+    <apex:attribute name="y" type="Decimal" description="" assignTo="{!BaseY}" />
+    <apex:attribute name="width" type="Decimal" description="" assignTo="{!BaseWidth}" />
+    <apex:attribute name="imageId" type="string" description="" assignTo="{!BaseId}" />
+
+    <svg x="0" y="0" width="21cm" height="29.7cm" viewBox="0 0 2100 2970" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <image id="{!BaseId}" x="{!BaseX}" y="{!BaseY}" width="{!BaseWidth}" xlink:href="data:;base64,{!ResourceBodyByBase64}" />
+    </svg>
+
+</apex:component>

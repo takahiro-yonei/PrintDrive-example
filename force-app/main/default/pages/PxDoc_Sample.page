@@ -1,0 +1,137 @@
+<apex:page controller="Con_PxDoc_Sample" contentType="application/xpxd" cache="false" showHeader="false" sidebar="false">
+
+    <pxd paper-type="A4">
+        <page>
+            <!-- width : 21cmを2100とする座標系 0.1mm単位 -->
+            <svg x="0" y="0" width="21cm" height="29.7cm" viewBox="0 0 2100 2970" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                <g font-family="'MS PGothic',sans-serif" font-size="40">
+                    <text id="Branding1" x="375" y="200" font-size="100">
+                        <tspan textlength="1600">PrintDrive/PxDoc3 for Salesforce</tspan>
+                    </text>
+                    <text id="Branding2" x="1975" y="300" font-size="100">
+                        <tspan text-anchor="end">サンプルページ / {!accSampleName}</tspan>
+                    </text>
+
+                    <!-- 画像の添付 -->
+                    <c:pxdoc_Image imageId="Logo" value="Logo" x="100" y="150" width="200" />
+
+                    <!-- 図形(円) -->
+                    <g stroke="none" stroke-width="1">
+                        <circle cy="1200" r="80" cx="1225" fill="red" />
+                        <circle cy="1200" r="80" cx="1425" fill="green" />
+                        <circle cy="1200" r="80" cx="1625" fill="blue" />
+                        <circle cy="1200" r="80" cx="1825" fill="white" stroke="gray" />
+
+                        <circle cy="1400" r="80" cx="1225" fill="cyan" />
+                        <circle cy="1400" r="80" cx="1425" fill="magenta" />
+                        <circle cy="1400" r="80" cx="1625" fill="yellow" />
+                        <circle cy="1400" r="80" cx="1825" fill="black" />
+                    </g>
+
+                    <!-- 指定長さで自動改行 -->
+                    <!-- 等幅フォント -->
+                    <g transform="translate(100,400)" font-size="40" font-family="'MS Gothic',monospace">
+                        <apex:variable value="{!0}" var="idx" />
+                        <apex:variable value="{!40}" var="height" /><!-- heightはfont-sizeと同じか、それ以上が良い -->
+                        <apex:variable value="{!40}" var="length" />
+                        <apex:variable value="{!10}" var="maxRow" />
+
+                        <printdrive:outputTextWordBreakAll value="左端、上端に合わせて出力  半角スペース2個で改行  3行表示"
+                            textHAnchor="start" textVAnchor="top"
+                            y="50" x="100"
+                            lineTextLength="{!length}" lineHeight="{!height}" maxRow="{!maxRow}"
+                        />
+                        <line style="stroke:rgb(0,0,0);stroke-width:4"
+                            x1="0" y1="50"
+                            x2="800" y2="50"
+                        />
+
+                        <printdrive:outputTextWordBreakAll value="左端、中央揃えに合わせて出力  半角スペース2個で改行  3行表示"
+                            textHAnchor="start" textVAnchor="middle"
+                            y="450" x="100"
+                            lineTextLength="{!length}" lineHeight="{!height}" maxRow="{!maxRow}"
+                        />
+                        <line style="stroke:rgb(0,0,0);stroke-width:4"
+                            x1="0" y1="450"
+                            x2="800" y2="450"
+                        />
+
+                        <printdrive:outputTextWordBreakAll value="左端、下揃えに合わせて出力  半角スペース2個で改行  3行表示"
+                            textHAnchor="start" textVAnchor="end"
+                            y="850" x="100"
+                            lineTextLength="{!length}" lineHeight="{!height}" maxRow="{!maxRow}"
+                        />
+                        <line style="stroke:rgb(0,0,0);stroke-width:4"
+                            x1="0" y1="850"
+                            x2="800" y2="850"
+                        />
+
+                        <!-- 左端、上端に合わせて出力する -->
+                        <printdrive:outputTextWordBreakLF value="{!multiLineText}"
+                            textHAnchor="end" textVAnchor="start"
+                            y="50" x="1800.5"
+                            lineTextLength="{!length}" lineHeight="{!height * 1.1}" maxRow="{!maxRow}"
+                        />
+
+                        <!-- ワードラップ -->
+                        <printdrive:outputTextWordWrap value="長さで区切らず、指定した文字列・で区切るようにすることも可能です"
+                            textHAnchor="end" textVAnchor="middle"
+                            wrapChars="['・']"
+                            y="450" x="1800.5"
+                            lineTextLength="{!length}" lineHeight="{!height * 1.1}" maxRow="{!maxRow}"
+                        />
+                        <line style="stroke:rgb(0,0,0);stroke-width:4"
+                            x1="1000" y1="450"
+                            x2="1800" y2="450"
+                        />
+                    </g>
+
+                    <!-- グリッド -->
+                    <g transform="translate(100,1600)" font-family="'MS Gothic',monospace"><!-- 等幅フォント -->
+                        <g stroke="none" fill="whitesmoke">
+                            <rect x="1" y="100" width="1897" height="50"></rect>
+                            <rect x="1" y="200" width="1897" height="50"></rect>
+                            <rect x="1" y="300" width="1897" height="50"></rect>
+                            <rect x="1" y="400" width="1897" height="50"></rect>
+                        </g>
+                        <g fill="none" stroke="black" stroke-width="1">
+                            <rect height="500" width="1900" x="0" y="0" rx="20"></rect><!-- 外枠 -->
+                            <line x1="0" x2="1900" y1="50" y2="50"></line>
+                            <g y1="0" y2="500">
+                                <line x1="600" x2="600"></line>
+                                <line x1="900" x2="900"></line>
+                                <line x1="1500" x2="1500"></line>
+                            </g>
+                        </g>
+                        <!-- 列タイトル部分 -->
+                        <g y="40" font-size="40" text-anchor="middle">
+                            <text x="300" textlength="500">グローバル変数</text>
+                            <text x="750" textlength="200">ラベル</text>
+                            <text x="1200" textlength="100">値</text>
+                        </g>
+                        <style type="text/css">
+                            .column1 { x: 50;} .column2 { x: 650;} .column3 { x: 1450;} <!-- 右揃え -->
+                            .row1 {y: 90;} .row2 {y: 140;} .row3 {y: 190;} .row4 {y: 240;} .row5 {y: 290;} .row6 {y:
+                            340;} .row7 {y: 390;} .row8 {y: 340;} .row9 {y: 390;}
+                        </style>
+                        <g class="row1">
+                            <text class="column1">$Organization.Name</text>
+                            <text class="column2">組織名</text>
+                            <text class="column3" text-anchor="end">
+                                <apex:outputText value="{!$Organization.Name}" />
+                            </text>
+                        </g>
+                        <g class="row2">
+                            <text class="column1">$User.CompanyName</text>
+                            <text class="column2">会社名</text>
+                            <text class="column3" text-anchor="end">
+                                <apex:outputText value="{!$User.CompanyName}" />
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </page>
+    </pxd>
+</apex:page>

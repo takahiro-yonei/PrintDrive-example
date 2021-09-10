@@ -1,0 +1,25 @@
+<apex:page standardController="Account" extensions="ConBootPxDoc_Sample"
+    showHeader="false"
+    sidebar="false"
+    action="{!doBootPxDoc_02}">
+
+<script type="text/javascript">
+    const LIC_SRV_URL = '{!pxdocLicEndPoint}';
+    const token = '{!JSENCODE(pxdocToken)}';
+</script>
+<script type="text/javascript" src="{!URLFOR($Resource.printdrive__px3sf, '/px3sf.js')}"></script>
+<script type="text/javascript">
+window.onload = function(){
+    pxd.printout('{!pxdocUrl}');
+    setTimeout(function(){
+        window.history.back();
+    }, 3000);
+}
+</script>
+
+<html>
+<h2>
+Now Printing...
+</h2>
+</html>
+</apex:page>
