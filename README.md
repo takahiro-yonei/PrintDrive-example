@@ -69,6 +69,7 @@ $ sfdx force:source:push -u xxx -f
 ---> クエリパラメータとして受け取ったURLを、BootPxDoc_Sample01に渡す
 
 ---> BootPxDoc_Sample01からPxDoc3を起動
+＊最初に起動する際、アラートが表示されるかもしれません。その場合は再度お試しください。
 ```
 
 ## サンプル(2)
@@ -83,6 +84,7 @@ $ sfdx force:source:push -u xxx -f
 ---> doBootPxDoc_02 の起動処理内で、帳票用VisualforcePageのURLを生成して、BootPxDoc_Sample02 に渡す
 
 ---> BootPxDoc_Sample02からPxDoc3を起動
+＊最初に起動する際、アラートが表示されるかもしれません。その場合は再度お試しください。
 ```
 
 ## その他
