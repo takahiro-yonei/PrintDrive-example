@@ -11,32 +11,34 @@ $ sfdx force:org:create -f ./config/project-scratch-def.json -a pd.sc -d 30
 ### 2. パスワードを発行
 
 ```
-$ sfdx force:user:password:generate -u test-vv0mbdluag1y@example.com
+$ sfdx force:user:password:generate -u (ユーザ名)
 ```
 
 ### 3. ユーザ情報を確認
 
 ```
-$ sfdx force:user:display -u test-vv0mbdluag1y@example.com
+$ sfdx force:user:display -u (ユーザ名)
 ```
 
-### 4. PrintDrive (v1.30) をインストール
+### 4. PrintDrive (v1.31) をインストール
 
-1. https://test.salesforce.com/packaging/installPackage.apexp?p0=04t2K0000008Jzt にアクセスします
+1. https://test.salesforce.com/packaging/installPackage.apexp?p0=04t2K0000008KXl にアクセスします
 2. ユーザ名とパスワードを入力してパッケージをインストールします
 
 
-## 5. PxDoc3をローカルPCにインストール
+## 5. PxDoc4をローカルPCにインストール
 
-* 以下のダウンロードサイトから `install_px304_001_20200506.zip` をダウンロードします
-    * https://github.com/taodrive/PrintDrive/releases/tag/3.04.001
-* zipを解凍してインストーラーを起動してPxDoc3をインストールしてください
+* (PxDoc3がインストールされている場合)
+    * PxDoc3をインストールしたフォルダ内にある`unins000.exe`を実行して、PxDoc3をアンインストールしてください。
+
+* 以下のダウンロードサイトから `install_px400_05_32.zip` をダウンロードします
+    * https://github.com/taodrive/PrintDrive/releases/tag/4.00.05
+* zipを解凍してインストーラーを起動してPxDoc4をインストールしてください
 
 ## 6. サンプルプログラムの移送
 
 ```
 $ git clone git@github.com:takahiro-yonei/PrintDrive-example.git
-
 $ sfdx force:source:push -u xxx -f
 ```
 
