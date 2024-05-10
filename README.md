@@ -20,9 +20,9 @@ $ sfdx force:user:password:generate -u (ユーザ名)
 $ sfdx force:user:display -u (ユーザ名)
 ```
 
-### 4. PrintDrive (v1.31) をインストール
+### 4. PrintDrive (v1.32) をインストール
 
-1. https://test.salesforce.com/packaging/installPackage.apexp?p0=04t2K0000008KXl にアクセスします
+1. https://test.salesforce.com/packaging/installPackage.apexp?p0=04tDp000000m2Fg にアクセスします
 2. ユーザ名とパスワードを入力してパッケージをインストールします
 
 
